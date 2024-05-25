@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <h1>Edit Employee Form</h1>
+    <form class="border mt-3 p-5 rounded w-75">
+        <div class="form-floating mb-3">
+            <input #id='ngModel' name="id" [(ngModel)]="employee.id" type="text" class="form-control" id="floatingInputId" placeholder="Employee Id" pattern="[a-zA-Z0-9]*" required readonly>
+            <label for="floatingInputId">Employee Id</label>
+        </div>
+        <div *ngIf="id.invalid && id.touched" class="text-danger">*Invalid User Id</div>
+
+        <div class="form-floating mb-3">
+            <input #name='ngModel' name="name" [(ngModel)]="employee.name" type="text" class="form-control" id="floatingInputName" placeholder="Name" pattern="[a-zA-Z ]*" required>
+            <label for="floatingInputName">Name</label>
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="text-danger">*Invalid User Name</div>
+
+        <div class="form-floating mb-3">
+            <input #email='ngModel' name="email" [(ngModel)]="employee.email" type="text" class="form-control" id="floatingInputEmail" placeholder="email" email required>
+            <label for="floatingInputEmail">Email</label>
+        </div>
+        <div *ngIf="email.invalid && email.touched" class="text-danger">*Invalid User Email</div>
+
+        <div class="form-floating mb-3">
+            <select name="status" [(ngModel)]="employee.status" class="form-control" id="floatingInputStatus" placeholder="Employee Status" required>
+                <option value=""></option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+            <label for="floatingInputStatus">Employee Status</label>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <button (click)="cancel(employee.id)" class="btn btn-warning">Cancel</button>
+            <button (click)="updateEmployee()" class="btn btn-success">Update</button>
+        </div>
+    </form>
+</div>
+

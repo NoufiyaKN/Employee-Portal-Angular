@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row d-flex justify-content-between mt-5">
+        <div class="col-lg-6">
+            <h1>All Users</h1>
+        </div>
+        <div class="col-lg-6">
+            <button routerLink="/add" class="btn btn-primary"><i class="fa-solid fa-user-plus me-1"></i>Add Employee</button>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <div class="table mt-5">
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Emp Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>status</th>
+                    <th>...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of allEmployees;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
+                    <td><span style="width: 90px;" [ngClass]="employee.status=='1'?'btn btn-success':'btn btn-secondary'">{{employee.status=="1"?"Active":"Inactive"}}</span></td>
+                    <td>
+                        <button [routerLink]="['/edit', employee.id]" class="btn text-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button (click)="deleteEmployee(employee.id)" class="btn text-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <div class="mt-2 text-center">
+            </div>
+        </table>
+    </div>
+</div>
